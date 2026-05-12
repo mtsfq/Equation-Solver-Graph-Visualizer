@@ -39,7 +39,7 @@ git push          →  ارفع لـ GitHub
 اضافة مرفقات جديده
 
 9- git checkout d9778ca67d6e660da5837e8bffe1521a99c9e58b 
-يوريك المرفق هذا كيف كان
+ يوريك المرفق هذا كيف كان او يخش عله
 
 10- git push
 يرفع التغييرات الجديده الي سويتها
@@ -47,6 +47,25 @@ git push          →  ارفع لـ GitHub
 11- git checkout -b c
 يسويلك فرع جديد او برانش جديد غير الي هو الماستر 
 
+12- git merge c 
+سحب التعديلات من سي الى المكان الي انا فيه حاليا
 
+13- git fetch 
+    وبعدها git status 
+يعرض لك التعديلات او كوميت الي مو موجوده عندك 
+git pull -- وهذي علشان تسحبها عندك
+
+-----------------------------------------------
+git add .
+git commit -m "all files"
+git push
+-----------------------------------------------
+
+git branch                            # للفروع اللي بجهازك
+git branch -r                         # للفروع اللي على GitHub 
+git branch -a                         # الفروع كلها 
+git branch -d graph.py                # حذف برنش محلي 
+git branch -D graph.py                # الحذف الإجباري 
+git push origin --delete graph.py     #  حذف برنش من GitHub
 
 
