@@ -41,11 +41,11 @@ git push          →  ارفع لـ GitHub
 9- git checkout d9778ca67d6e660da5837e8bffe1521a99c9e58b 
 يوريك المرفق هذا كيف كان
 
+10- git push
+يرفع التغييرات الجديده الي سويتها
 
-sdfgsg
-
-
-
+11- git checkout -b c
+يسويلك فرع جديد او برانش جديد غير الي هو الماستر 
 
 
 
