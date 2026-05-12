@@ -1,0 +1,52 @@
+الاكواد المهمه و فايدتها :
+
+
+1- git clone https://github.com -- (هذا الرابط هو رابط المشروع في قيت هاب)
+هذاالكود يسويلك نسخه من المشروع على جهازك
+
+2- git remote add origin  
+يربط مشروعك المحلي (في جهازك) بمشروعك على GitHub
+بدل ما تكتب الرابط الطويل كل مرة، تكتب origin فقط
+
+3- git remote -v 
+يعرض كل المستودعات البعيدة المربوطة بمشروعك
+
+4- git push -u origin main
+يرفع كل ملفاتك من جهازك إلى GitHub 
+ يخلي  يتذكر هذا الربط، فالمرات الجاية تكتب git push -u  فقط
+
+5- 
+git init          →  جهّز المشروع لـ Git
+       
+git remote add    →  اربطه بـ GitHub
+       
+git add .         →  جهّز الملفات
+       
+git commit -m     →  احفظ نسخة
+       
+git branch -M     →  سمّ الفرع main
+       
+git push          →  ارفع لـ GitHub 
+
+6- git config --global user.name "اسمك"
+   git config --global user.email "ايميلك@example.com"
+تعريف يوزر و ايميل حسابك  في ال قيت هاب  ((--global) هذي علشان التعريف لمره واحده )
+
+7- git log -v
+يطلعلك كل المرفقات الجديده الي حفظتها بتعليق معين
+
+8- git commit -m "التعليق" 
+اضافة مرفقات جديده
+
+9- git checkout d9778ca67d6e660da5837e8bffe1521a99c9e58b 
+يوريك المرفق هذا كيف كان
+
+
+sdfgsg
+
+
+
+
+
+
+
