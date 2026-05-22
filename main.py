@@ -1,97 +1,114 @@
-# هذا الملف الاساسي
+# (واجهه المستخدم) هذا الملف يحتوي على الكود الرئيسي للتطبيق 
 
-# from sympy import *
-# from sympy.parsing.sympy_parser import parse_expr
+import customtkinter as ctk
 
-# x = symbols('x')
+from solver import solve_equation
 
-# user_input = input("Enter math expression: ")
+from calculus import (
+    derivative,
+    integral
+)
 
-# try:
+ctk.set_appearance_mode("dark")
 
-#     # إذا فيها =
-#     if "=" in user_input:
+app = ctk.CTk()
 
-#         left, right = user_input.split("=")
+app.geometry("900x700")
 
-#         equation = Eq(parse_expr(left), parse_expr(right))
-
-#         solution = solve(equation, x)
-
-#         print("Solution:")
-#         print(solution)
-
-#     # إذا فيها integrate
-#     elif "integrate" in user_input.lower():
-
-#         expression = user_input.replace("integrate", "")
-
-#         result = integrate(parse_expr(expression), x)
-
-#         print("Integral:")
-#         print(result)
-
-#     # إذا فيها derivative
-#     elif "derivative" in user_input.lower():
-
-#         expression = user_input.replace("derivative", "")
-
-#         result = diff(parse_expr(expression), x)
-
-#         print("Derivative:")
-#         print(result)
-
-#     else:
-
-#         print("Unknown expression")
-
-# except Exception as e:
-
-#     print("Error:")
-#     print(e)
+app.title("РУМ")
 
 
+title = ctk.CTkLabel(
+    app,
+    text="РУМ",
+    font=("Arial",30)
+)
 
-from sympy import symbols, Eq, solve, diff, integrate, sympify
-from sympy.parsing.sympy_parser import parse_expr
-from graph import plot_graph
+title.pack(pady=20)
 
-x = symbols('x')
 
-user_input = input("Enter math expression: ")
+entry = ctk.CTkEntry(
+    app,
+    width=500,
+    height=40,
+    placeholder_text="Введите выражение..."
+)
 
-try:
-    # حل المعادلات
-    if "=" in user_input:
-        left, right = user_input.split("=")
-        equation = Eq(parse_expr(left), parse_expr(right))
-        solution = solve(equation, x)
+entry.pack(pady=20)
 
-        print("Solution:")
-        print(solution)
 
-    # الاشتقاق
-    elif "derivative" in user_input.lower():
-        expression = user_input.lower().replace("derivative", "").strip()
-        result = diff(parse_expr(expression), x)
+result_label = ctk.CTkLabel(
+    app,
+    text="Результат:",
+    font=("Arial",20)
+)
 
-        print("Derivative:")
-        print(result)
+result_label.pack(pady=20)
 
-    # التكامل
-    elif "integrate" in user_input.lower():
-        expression = user_input.lower().replace("integrate", "").strip()
-        result = integrate(parse_expr(expression), x)
 
-        print("Integral:")
-        print(result)
+def solve_click():
 
-    # الرسم البياني
-    else:
-        expression = parse_expr(user_input)
-        print("Drawing graph...")
-        plot_graph(expression)
+    expression = entry.get()
 
-except Exception as e:
-    print("Error:")
-    print(e)
+    result = solve_equation(
+        expression
+    )
+
+    result_label.configure(
+        text=f"Результат: {result}"
+    )
+
+def derivative_click():
+
+    expression = entry.get()
+
+    result = derivative(
+        expression
+    )
+
+    result_label.configure(
+        text=f"Производная: {result}"
+    )
+
+def integral_click():
+
+    expression = entry.get()
+
+    result = integral(
+        expression
+    )
+
+    result_label.configure(
+        text=f"Интеграл: {result}"
+    )
+
+solve_button = ctk.CTkButton(
+    app,
+    text="Решить",
+    command=solve_click
+)
+
+solve_button.pack(pady=20)
+
+derivative_button = ctk.CTkButton(
+    app,
+    text="Производная",
+    command=derivative_click
+)
+
+derivative_button.pack(
+    pady=10
+)
+
+
+integral_button = ctk.CTkButton(
+    app,
+    text="Интеграл",
+    command=integral_click
+)
+
+integral_button.pack(
+    pady=10
+)
+
+app.mainloop()

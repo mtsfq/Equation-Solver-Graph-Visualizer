@@ -1,21 +1,65 @@
-# هذا الكود يستخدم مكتبة sympy لحل المعادلات الجبرية.
+# هذا الملف يحتوي على الكود الخاص بحل المعادلات الرياضية باستخدام مكتبة sympy
 
 
-from sympy import symbols, solve
+from sympy import *
+from sympy.parsing.sympy_parser import (
+    parse_expr,
+    standard_transformations,
+    implicit_multiplication_application
+)
 
-# تعريف المتغير x
 x = symbols('x')
 
-# دالة حل المعادلات
+transformations = (
+    standard_transformations +
+    (implicit_multiplication_application,)
+)
+
+
 def solve_equation(expression):
-    solutions = solve(expression, x)
-    return solutions
 
+    try:
 
-# اختبار
-equation = x**2 + 3*x + 2
+        expression = expression.replace("^","**")
 
-result = solve_equation(equation)
+        if "=" in expression:
 
-print("Solutions:")
-print(result)
+            left,right = expression.split("=")
+
+            equation = Eq(
+
+                parse_expr(
+                    left,
+                    transformations=transformations
+                ),
+
+                parse_expr(
+                    right,
+                    transformations=transformations
+                )
+            )
+
+            solution = solve(
+                equation,
+                x
+            )
+
+            return solution
+
+        else:
+
+            expr = parse_expr(
+                expression,
+                transformations=transformations
+            )
+
+            solution = solve(
+                expr,
+                x
+            )
+
+            return solution
+
+    except Exception as e:
+
+        return str(e)
