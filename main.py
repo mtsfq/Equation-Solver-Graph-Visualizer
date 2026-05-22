@@ -2,6 +2,8 @@
 
 import customtkinter as ctk
 
+from graph import plot_graph
+
 from solver import solve_equation
 
 from calculus import (
@@ -70,6 +72,14 @@ def derivative_click():
         text=f"Производная: {result}"
     )
 
+def graph_click():
+
+    expression = entry.get()
+
+    plot_graph(
+        expression
+    )
+
 def integral_click():
 
     expression = entry.get()
@@ -100,7 +110,6 @@ derivative_button.pack(
     pady=10
 )
 
-
 integral_button = ctk.CTkButton(
     app,
     text="Интеграл",
@@ -108,6 +117,16 @@ integral_button = ctk.CTkButton(
 )
 
 integral_button.pack(
+    pady=10
+)
+
+graph_button = ctk.CTkButton(
+    app,
+    text="График",
+    command=graph_click
+)
+
+graph_button.pack(
     pady=10
 )
 
