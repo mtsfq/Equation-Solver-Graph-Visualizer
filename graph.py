@@ -78,4 +78,4 @@ def plot_graph(expression):
 
     plt.ylabel("y")
 
-    plt.show()
+    plt.show(block=False)
